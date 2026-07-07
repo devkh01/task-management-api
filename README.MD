@@ -29,10 +29,13 @@ npm run dev
 
 ## API Endpoints
 
-| Method | Endpoint |
-|---------|----------|
-| GET | /tasks |
-| GET | /tasks/:id |
-| POST | /tasks |
-| PUT | /tasks/:id |
-| DELETE | /tasks/:id |
+## API Endpoints
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/` | Welcome message |
+| GET | `/tasks` | Get all tasks |
+| GET | `/tasks/:id` | Get a task by ID |
+| POST | `/tasks` | Create a new task |
+| PUT | `/tasks/:id` | Update an existing task |
+| DELETE | `/tasks/:id` | Delete a task |

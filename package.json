@@ -8,8 +8,8 @@
   "main": "script.js",
   "devDependencies": {},
   "scripts": {
-    "start": "node script.js",
-    "dev": "nodemon script.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
