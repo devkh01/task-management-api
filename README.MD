@@ -1,9 +1,14 @@
 # Task Management API
 
-A RESTful API built with Node.js, Express.js, and PostgreSQL to perform CRUD operations on tasks. The project follows a clean architecture using routes, controllers, middlewares, and environment variables.
+A RESTful API built with Node.js, Express.js, PostgreSQL, and JWT Authentication to perform CRUD operations on tasks. The project follows a clean architecture using routes, controllers, middlewares, and environment variables.
 
 ## Features
 
+- User Registration
+- User Login
+- Password Hashing using bcrypt
+- JWT Authentication
+- Protected Task Routes
 - Create a new task
 - Get all tasks
 - Get a task by ID
@@ -11,6 +16,9 @@ A RESTful API built with Node.js, Express.js, and PostgreSQL to perform CRUD ope
 - Delete a task
 - Task validation middleware
 - ID validation middleware
+- User validation middleware
+- Login validation middleware
+- JWT verification middleware
 - Environment variable support using `.env`
 
 ## Technologies Used
@@ -19,6 +27,8 @@ A RESTful API built with Node.js, Express.js, and PostgreSQL to perform CRUD ope
 - Express.js
 - PostgreSQL
 - pg
+- bcrypt
+- jsonwebtoken
 - dotenv
 
 ## Project Structure
@@ -32,17 +42,31 @@ task-api/
 ├── .gitignore
 │
 ├── routes/
-│   └── taskRoutes.js
+│   ├── taskRoutes.js
+│   └── authRoutes.js
 │
 ├── controllers/
-│   └── taskController.js
+│   ├── taskController.js
+│   └── authController.js
 │
 ├── middlewares/
 │   ├── validateTask.js
-│   └── validateId.js
+│   ├── validateId.js
+│   ├── validateUser.js
+│   ├── validateLoginUser.js
+│   └── verifyToken.js
 ```
 
 ## API Endpoints
+
+### Authentication
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/auth/registerUser` | Register a new user |
+| POST | `/auth/loginUser` | Login and receive JWT |
+
+### Tasks
 
 | Method | Endpoint | Description |
 |---------|----------|-------------|
@@ -52,6 +76,7 @@ task-api/
 | PUT | `/tasks/:id` | Update a task |
 | DELETE | `/tasks/:id` | Delete a task |
 
+> **Note:** All task routes require a valid JWT Bearer Token.
 
 ## Environment Variables
 
@@ -63,6 +88,8 @@ DB_HOST=localhost
 DB_NAME=your_database_name
 DB_PASSWORD=your_password
 DB_PORT=5432
+
+JWT_SECRET=your_secret_key
 ```
 
 ## Installation
@@ -97,6 +124,9 @@ Through this project, I learned:
 - REST API design
 - CRUD operations with PostgreSQL
 - Middleware in Express
-- Controllers and project architecture
+- Authentication using JWT
+- Password hashing with bcrypt
+- Protecting routes using middleware
 - Request validation
 - Environment variables using `.env`
+- Organizing a backend project using controllers, routes, and middlewares
