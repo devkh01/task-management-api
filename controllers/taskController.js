@@ -4,7 +4,7 @@ const createTask = async (req, res) => {
   try {
     const result = await pool.query(
       "INSERT INTO tasks(title, completed) VALUES($1, $2) RETURNING *",
-      [req.body.title, req.body.completed],
+      [req.body.title, req.body.completed]
     );
     return res.status(201).send(result.rows[0]);
   } catch (error) {

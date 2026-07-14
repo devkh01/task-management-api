@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const validateId = require("../middlewares/validateId");
 const validateTask = require("../middlewares/validateTask");
+const verifyToken = require("../middlewares/verifyToken");
 
 const {
   createTask,
@@ -11,14 +12,14 @@ const {
   getAllTasks,
 } = require("../controllers/taskController");
 
-router.get("/", getAllTasks);
+router.get("/",verifyToken, getAllTasks);
 
-router.post("/", validateTask, createTask);
+router.post("/",verifyToken,  validateTask, createTask);
 
-router.get("/:id", validateId, getTaskById);
+router.get("/:id",verifyToken, validateId, getTaskById);
 
-router.put("/:id", validateId, validateTask, updateTask);
+router.put("/:id",verifyToken, validateId, validateTask, updateTask);
 
-router.delete("/:id", validateId, deleteTask);
+router.delete("/:id",verifyToken, validateId, deleteTask);
 
 module.exports = router;
